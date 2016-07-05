@@ -15,9 +15,28 @@
 //------------------------------------------------------------------------------
 // use the all-in-one version of zxing that we built
 //------------------------------------------------------------------------------
-#import "zxing-all-in-one.h"
-#import <Cordova/CDVPlugin.h>
+#import <zxing/ZXing.h>
+#import <zxing/BarcodeFormat.h>
+#import <zxing/LuminanceSource.h>
+#import <zxing/DecodeHints.h>
+#import <zxing/Binarizer.h>
+#import <zxing/Exception.h>
+#import <zxing/ChecksumException.h>
+#import <zxing/FormatException.h>
+#import <zxing/IllegalStateException.h>
+#import <zxing/InvertedLuminanceSource.h>
+#import <zxing/MultiFormatReader.h>
+#import <zxing/NotFoundException.h>
+#import <zxing/Reader.h>
+#import <zxing/ReaderException.h>
+#import <zxing/Result.h>
+#import <zxing/ResultPoint.h>
+#import <zxing/ResultPointCallback.h>
+#import <zxing/common/HybridBinarizer.h>
+#import <zxing/common/GreyscaleLuminanceSource.h>
 
+
+#import <Cordova/CDVPlugin.h>
 
 //------------------------------------------------------------------------------
 // Delegate to handle orientation functions
@@ -528,31 +547,61 @@ parentViewController:(UIViewController*)parentViewController
             supportedFormats = [self.formats componentsSeparatedByString:@","];
         }
         DecodeHints decodeHints;
-        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_QR_CODE]]) {
-            decodeHints.addFormat(BarcodeFormat_QR_CODE);
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::QR_CODE]]) {
+            decodeHints.addFormat(BarcodeFormat::QR_CODE);
         }
-        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_CODE_128]]) {
-            decodeHints.addFormat(BarcodeFormat_CODE_128);
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::CODE_128]]) {
+            decodeHints.addFormat(BarcodeFormat::CODE_128);
         }
-        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_CODE_39]]) {
-            decodeHints.addFormat(BarcodeFormat_CODE_39);
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::CODE_39]]) {
+            decodeHints.addFormat(BarcodeFormat::CODE_39);
         }
-        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_DATA_MATRIX]]) {
-            decodeHints.addFormat(BarcodeFormat_DATA_MATRIX);
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::DATA_MATRIX]]) {
+            decodeHints.addFormat(BarcodeFormat::DATA_MATRIX);
         }
-        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_UPC_E]]) {
-            decodeHints.addFormat(BarcodeFormat_UPC_E);
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::UPC_E]]) {
+            decodeHints.addFormat(BarcodeFormat::UPC_E);
         }
-        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_UPC_A]]) {
-            decodeHints.addFormat(BarcodeFormat_UPC_A);
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::UPC_A]]) {
+            decodeHints.addFormat(BarcodeFormat::UPC_A);
         }
-        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_EAN_8]]) {
-            decodeHints.addFormat(BarcodeFormat_EAN_8);
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::EAN_8]]) {
+            decodeHints.addFormat(BarcodeFormat::EAN_8);
         }
-        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_EAN_13]]) {
-            decodeHints.addFormat(BarcodeFormat_EAN_13);
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::EAN_13]]) {
+            decodeHints.addFormat(BarcodeFormat::EAN_13);
         }
-//        decodeHints.addFormat(BarcodeFormat_ITF);   causing crashes
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::RSS_14]]) {
+            decodeHints.addFormat(BarcodeFormat::RSS_14);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::CODABAR]]) {
+            decodeHints.addFormat(BarcodeFormat::CODABAR);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::CODE_128]]) {
+            decodeHints.addFormat(BarcodeFormat::CODE_128);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::CODE_39]]) {
+            decodeHints.addFormat(BarcodeFormat::CODE_39);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::CODE_93]]) {
+            decodeHints.addFormat(BarcodeFormat::CODE_93);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::AZTEC]]) {
+            decodeHints.addFormat(BarcodeFormat::AZTEC);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::ITF]]) {
+            decodeHints.addFormat(BarcodeFormat::ITF);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::DATA_MATRIX]]) {
+            decodeHints.addFormat(BarcodeFormat::DATA_MATRIX);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::MAXICODE]]) {
+            decodeHints.addFormat(BarcodeFormat::MAXICODE);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat::PDF_417]]) {
+            decodeHints.addFormat(BarcodeFormat::PDF_417);
+        }
+//        decodeHints.addFormat(BarcodeFormat::ITF);   causing crashes
 
         // here's the meat of the decode process
         Ref<LuminanceSource>   luminanceSource   ([self getLuminanceSourceFromSample: sampleBuffer imageBytes:&imageBytes]);
@@ -590,24 +639,29 @@ parentViewController:(UIViewController*)parentViewController
     //        NSLog(@"decoding completed in %dms", (int) (timeElapsed * 1000));
 
     // free the buffer behind the LuminanceSource
-    if (imageBytes) {
-        free(imageBytes);
-    }
+//    if (imageBytes) {
+//        free(imageBytes);
+//    }
 }
 
 //--------------------------------------------------------------------------
 // convert barcode format to string
 //--------------------------------------------------------------------------
 - (NSString*)formatStringFrom:(zxing::BarcodeFormat)format {
-    if (format == zxing::BarcodeFormat_QR_CODE)      return @"QR_CODE";
-    if (format == zxing::BarcodeFormat_DATA_MATRIX)  return @"DATA_MATRIX";
-    if (format == zxing::BarcodeFormat_UPC_E)        return @"UPC_E";
-    if (format == zxing::BarcodeFormat_UPC_A)        return @"UPC_A";
-    if (format == zxing::BarcodeFormat_EAN_8)        return @"EAN_8";
-    if (format == zxing::BarcodeFormat_EAN_13)       return @"EAN_13";
-    if (format == zxing::BarcodeFormat_CODE_128)     return @"CODE_128";
-    if (format == zxing::BarcodeFormat_CODE_39)      return @"CODE_39";
-    if (format == zxing::BarcodeFormat_ITF)          return @"ITF";
+    if (format == zxing::BarcodeFormat::QR_CODE)      return @"QR_CODE";
+    if (format == zxing::BarcodeFormat::DATA_MATRIX)  return @"DATA_MATRIX";
+    if (format == zxing::BarcodeFormat::UPC_E)        return @"UPC_E";
+    if (format == zxing::BarcodeFormat::UPC_A)        return @"UPC_A";
+    if (format == zxing::BarcodeFormat::EAN_8)        return @"EAN_8";
+    if (format == zxing::BarcodeFormat::EAN_13)       return @"EAN_13";
+    if (format == zxing::BarcodeFormat::CODE_128)     return @"CODE_128";
+    if (format == zxing::BarcodeFormat::CODE_39)      return @"CODE_39";
+    if (format == zxing::BarcodeFormat::CODABAR)     return @"CODABAR";
+    if (format == zxing::BarcodeFormat::CODE_93)      return @"CODE_93";
+    if (format == zxing::BarcodeFormat::RSS_14)      return @"RSS_14";
+    if (format == zxing::BarcodeFormat::ITF)          return @"ITF";
+    if (format == zxing::BarcodeFormat::AZTEC)          return @"AZTEC";
+    if (format == zxing::BarcodeFormat::PDF_417)          return @"PDF_417";
     return @"???";
 }
 
@@ -626,10 +680,11 @@ parentViewController:(UIViewController*)parentViewController
 
     // only going to get 90% of the min(width,height) of the captured image
     size_t    greyWidth  = 9 * MIN(width, height) / 10;
-    uint8_t*  greyData   = (uint8_t*) malloc(greyWidth * greyWidth);
+//    uint8_t*  greyData   = (uint8_t*) malloc(greyWidth * greyWidth);
+    zxing::ArrayRef<char> greyData = zxing::ArrayRef<char>((int)(greyWidth * greyWidth));
 
     // remember this pointer so we can free it later
-    *ptr = greyData;
+    *ptr = (uint8_t *)greyData.array_;
 
     if (!greyData) {
         CVPixelBufferUnlockBaseAddress(imageBuffer,0);
@@ -675,10 +730,10 @@ parentViewController:(UIViewController*)parentViewController
 // for debugging
 //--------------------------------------------------------------------------
 - (UIImage*) getImageFromLuminanceSource:(zxing::LuminanceSource*)luminanceSource  {
-    unsigned char* bytes = luminanceSource->getMatrix();
+    zxing::ArrayRef<char> bytes = luminanceSource->getMatrix();
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
     CGContextRef context = CGBitmapContextCreate(
-                                                 bytes,
+                                                 (unsigned char *)bytes.array_,
                                                  luminanceSource->getWidth(), luminanceSource->getHeight(), 8, luminanceSource->getWidth(),
                                                  colorSpace,
                                                  kCGImageAlphaNone
@@ -690,7 +745,7 @@ parentViewController:(UIViewController*)parentViewController
     CGContextRelease(context);
     CGColorSpaceRelease(colorSpace);
     CGImageRelease(cgImage);
-    free(bytes);
+//    free(bytes);
 
     return image;
 }
