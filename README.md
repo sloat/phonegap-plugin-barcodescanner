@@ -1,6 +1,23 @@
 # PhoneGap Plugin BarcodeScanner
 ================================
 
+**Note:** This is a fork that uses the [zxing-cpp](https://github.com/glassechidna/zxing-cpp) repo as a submodule. 
+It supports more formats for ios, but does not attempt to maintain compatibility with anything but iOS and Android.
+
+It also requires some manual intervention, as I couldn't figure out how to modify the cordova build.xcconfig
+settings during plugin installation.
+
+Add to the `HEADER_SEARCH_PATHS` line of `platforms/ios/cordova/build.xcconfig`:
+    "$(PROJECT_DIR)/<Your App Name>/Plugins/phonegap-plugin-barcodescanner"
+
+Or something like that.
+
+If there's a way to change that which doesn't involve me reading through a pile of stack-overflow garbage, 
+send a PR or file an issue.
+
+----
+
+
 [![Build Status](https://travis-ci.org/phonegap/phonegap-plugin-barcodescanner.svg)](https://travis-ci.org/phonegap/phonegap-plugin-barcodescanner)
 
 Cross-platform BarcodeScanner for Cordova / PhoneGap.
