@@ -1,0 +1,3 @@
+[submodule "src/ios/zxing-cpp"]
+	path = src/ios/zxing-cpp
+	url = git@github.com:sloat/zxing-cpp.git
