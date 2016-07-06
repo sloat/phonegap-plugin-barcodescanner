@@ -39,7 +39,6 @@
         <source-file src="src/ios/zxing-cpp/core/src/bigint/BigIntegerUtils.cc" target-dir="zxing/bigint" />
         <source-file src="src/ios/zxing-cpp/core/src/bigint/BigUnsigned.cc" target-dir="zxing/bigint" />
         <source-file src="src/ios/zxing-cpp/core/src/bigint/BigUnsignedInABase.cc" target-dir="zxing/bigint" />
-
         <header-file src="src/ios/zxing-cpp/core/src/bigint/BigInteger.hh" target-dir="zxing/bigint" />
         <header-file src="src/ios/zxing-cpp/core/src/bigint/BigIntegerAlgorithms.hh" target-dir="zxing/bigint" />
         <header-file src="src/ios/zxing-cpp/core/src/bigint/BigIntegerLibrary.hh" target-dir="zxing/bigint" />
@@ -47,7 +46,6 @@
         <header-file src="src/ios/zxing-cpp/core/src/bigint/BigUnsigned.hh" target-dir="zxing/bigint" />
         <header-file src="src/ios/zxing-cpp/core/src/bigint/BigUnsignedInABase.hh" target-dir="zxing/bigint" />
         <header-file src="src/ios/zxing-cpp/core/src/bigint/NumberlikeArray.hh" target-dir="zxing/bigint" />
-
         <source-file src="src/ios/zxing-cpp/core/src/zxing/aztec/AztecDetectorResult.cpp" target-dir="zxing/aztec" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/aztec/AztecReader.cpp" target-dir="zxing/aztec" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/aztec/decoder/Decoder.cpp" target-dir="zxing/aztec/decoder" />
@@ -62,8 +60,8 @@
         <source-file src="src/ios/zxing-cpp/core/src/zxing/common/BitSource.cpp" target-dir="zxing/common" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/common/CharacterSetECI.cpp" target-dir="zxing/common" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/common/DecoderResult.cpp" target-dir="zxing/common" />
-        <source-file src="src/ios/zxing-cpp/core/src/zxing/common/detector/MonochromeRectangleDetector.cpp" target-dir="zxing/common" />
-        <source-file src="src/ios/zxing-cpp/core/src/zxing/common/detector/WhiteRectangleDetector.cpp" target-dir="zxing/common" />
+        <source-file src="src/ios/zxing-cpp/core/src/zxing/common/detector/MonochromeRectangleDetector.cpp" target-dir="zxing/common/detector" />
+        <source-file src="src/ios/zxing-cpp/core/src/zxing/common/detector/WhiteRectangleDetector.cpp" target-dir="zxing/common/detector" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/common/DetectorResult.cpp" target-dir="zxing/common" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/common/GlobalHistogramBinarizer.cpp" target-dir="zxing/common" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/common/GreyscaleLuminanceSource.cpp" target-dir="zxing/common" />
@@ -116,11 +114,11 @@
         <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/decoder/BitMatrixParser.cpp" target-dir="zxing/pdf417/decoder" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/decoder/DecodedBitStreamParser.cpp" target-dir="zxing/pdf417/decoder" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/decoder/Decoder.cpp" target-dir="zxing/pdf417/decoder" />
-        <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/decoder/ec/ErrorCorrection.cpp" target-dir="zxing/pdf417/decoder" />
+        <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/decoder/ec/ErrorCorrection.cpp" target-dir="zxing/pdf417/decoder/ec" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/decoder/ec/ModulusGF.cpp" target-dir="zxing/pdf417/decoder/ec" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/decoder/ec/ModulusPoly.cpp" target-dir="zxing/pdf417/decoder/ec" />
-        <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/detector/Detector.cpp" target-dir="zxing/pdf417" />
-        <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/detector/LinesSampler.cpp" target-dir="zxing/pdf417" />
+        <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/detector/Detector.cpp" target-dir="zxing/pdf417/detector" />
+        <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/detector/LinesSampler.cpp" target-dir="zxing/pdf417/detector" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/pdf417/PDF417Reader.cpp" target-dir="zxing/pdf417" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/qrcode/decoder/BitMatrixParser.cpp" target-dir="zxing/qrcode/decoder" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/qrcode/decoder/DataBlock.cpp" target-dir="zxing/qrcode/decoder" />
@@ -143,7 +141,6 @@
         <source-file src="src/ios/zxing-cpp/core/src/zxing/ResultIO.cpp" target-dir="zxing" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/ResultPoint.cpp" target-dir="zxing" />
         <source-file src="src/ios/zxing-cpp/core/src/zxing/ResultPointCallback.cpp" target-dir="zxing" />
-
         <header-file src="src/ios/zxing-cpp/core/src/zxing/aztec/AztecDetectorResult.h" target-dir="zxing/aztec" />
         <header-file src="src/ios/zxing-cpp/core/src/zxing/aztec/AztecReader.h" target-dir="zxing/aztec" />
         <header-file src="src/ios/zxing-cpp/core/src/zxing/aztec/decoder/Decoder.h" target-dir="zxing/aztec/decoder" />
